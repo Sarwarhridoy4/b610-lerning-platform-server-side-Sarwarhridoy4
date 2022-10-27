@@ -1,4 +1,3 @@
-
 //Initial server setup.
 
 const express = require("express");
@@ -8,8 +7,25 @@ const cors = require("cors");
 
 app.use(cors());
 
+const categories = require("./Data/Category/categories.json");
+const allcourse = require("./Data/All Course/All Course.json");
+
 app.get("/", (req, res) => {
   res.send("E- Pathshala server running...");
+});
+
+app.get("/course-categories", (req, res) => {
+  res.send(categories);
+});
+
+app.get("/courses", (req, res) => {
+  res.send(allcourse);
+});
+
+app.get("/category/:id", (req, res) => {
+  const id = req.params.id;
+  const category_course = allcourse.filter((c) => c.id === id);
+  res.send(category_course);
 });
 
 app.listen(port, () => {
