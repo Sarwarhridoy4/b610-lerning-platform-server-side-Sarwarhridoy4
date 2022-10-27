@@ -23,15 +23,14 @@ app.get("/courses", (req, res) => {
   res.send(allcourse);
 });
 
-app.get("/blogs", (req, res) => {
-  res.send(blogs);
-});
+
 
 app.get("/category/:id", (req, res) => {
   const id = req.params.id;
   const category_course = allcourse.filter((c) => c.id === id);
   res.send(category_course);
 });
+
 
 app.listen(port, () => {
   console.log("server listening on port:", port);
