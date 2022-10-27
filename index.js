@@ -23,8 +23,11 @@ app.get("/courses", (req, res) => {
   res.send(allcourse);
 });
 
-app.get("/course_detailse", (req, res) => {
-  res.send(allcourse);
+app.get("/details/:id", (req, res) => {
+  const id = req.params.id;
+  const detail = allcourse.filter((c) => c.id == id);
+  res.send(detail);
+  
 });
 
 app.get("/blogs", (req, res) => {
@@ -33,7 +36,7 @@ app.get("/blogs", (req, res) => {
 
 app.get("/category/:id", (req, res) => {
   const id = req.params.id;
-  const category_course = allcourse.filter((c) => c.id === id);
+  const category_course = allcourse.filter((c) => c.id == id);
   res.send(category_course);
 });
 
